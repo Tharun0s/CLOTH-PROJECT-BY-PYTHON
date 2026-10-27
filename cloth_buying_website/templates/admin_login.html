@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Login</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f7f5f0;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            margin: 0
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            width: min(340px, 85%);
+            box-shadow: 0 10px 40px #0001
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            box-sizing: border-box;
+            border-radius: 7px;
+            border: 1px solid #ddd
+        }
+
+        button {
+            background: #234b3d;
+            color: white;
+            border: 0;
+            font-weight: bold;
+            cursor: pointer
+        }
+
+        a {
+            color: #234b3d
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>Threadly Admin</h2>
+        <p>Enter the demo admin password to view orders.</p>{% with messages = get_flashed_messages() %}{% for message
+        in messages %}<p>{{message}}</p>{% endfor %}{% endwith %}<form method="post"><input type="password"
+                name="password" placeholder="Admin password" required><button type="submit">Login</button></form>
+        <p><a href="/">← Back to store</a></p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Orders</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+            color: #18211f
+        }
+
+        a {
+            color: #234b3d
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left
+        }
+
+        th {
+            background: #234b3d;
+            color: white
+        }
+
+        @media(max-width:700px) {
+            .tablewrap {
+                overflow: auto
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Store Orders</h1>
+    <p><a href="/">← Store</a> · <a href="/admin/logout">Logout</a></p>
+    <div class="tablewrap">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Time</th>
+            </tr>{% for order in orders %}<tr>
+                <td>{{order.id}}</td>
+                <td>{{order.customer_name}}</td>
+                <td>{{order.phone}}</td>
+                <td>{{order.address}}</td>
+                <td>{{order.product_name}}</td>
+                <td>{{order.quantity}}</td>
+                <td>₹{{"%.2f"|format(order.total)}}</td>
+                <td>{{order.created_at}}</td>
+            </tr>{% else %}<tr>
+                <td colspan="8">No orders yet.</td>
+            </tr>{% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>
